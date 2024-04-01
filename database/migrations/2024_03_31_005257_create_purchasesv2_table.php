@@ -17,6 +17,7 @@ class CreatePurchasesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('event_id')->constrained()->onDelete('cascade');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
