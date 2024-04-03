@@ -10,9 +10,16 @@ use Illuminate\Support\Facades\Storage;
 
 class TicketController extends Controller
 {
-
-    public function show(Ticket $ticket)
-    {
-        // Aquí puedes retornar la vista para mostrar el ticket
-    }
+     // Método para mostrar todos los boletos del usuario autenticado
+     public function userTickets()
+     {
+         // Obtener el ID del usuario autenticado
+         $userId = Auth::id();
+ 
+         // Obtener todos los boletos asociados al usuario
+         $tickets = Ticket::where('user_id', $userId)->get();
+ 
+         // Retornar los boletos a la vista
+         return view('views_client.tickets', compact('tickets'));
+     }
 }

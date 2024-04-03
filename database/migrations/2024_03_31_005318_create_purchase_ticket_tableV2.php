@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePurchasesTicketTable extends Migration
+class CreatePurchaseTicketTableV2 extends Migration
 {
     /**
      * Run the migrations.
@@ -34,5 +34,4 @@ class CreatePurchasesTicketTable extends Migration
     {
         Schema::dropIfExists('purchases_ticket');
     }
-};
-
+}

@@ -2,20 +2,21 @@
 
 namespace App\Models;
 
+use App\Models\Ticket;
+use Illuminate\Support\Str;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
-use Laravel\Fortify\TwoFactorAuthenticatable;
 
 class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
-    use HasProfilePhoto;
     use Notifiable;
-    use TwoFactorAuthenticatable;
 
     protected $fillable = [
         'name', 'email', 'password', 'username', 'provider', 'provider_id', 'provider_token', 'avatar'
@@ -45,7 +46,8 @@ class User extends Authenticatable
         return $username;
     }
 
-    public function tickets()
+
+    public function ticket()
     {
         return $this->hasMany(Ticket::class);
     }
